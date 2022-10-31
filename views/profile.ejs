@@ -1,0 +1,44 @@
+<%- include('partials/header') -%>
+<div class="container">
+  <div class="row mt-5">
+      <div class="col-6">
+          <div>
+              <p><strong>User Name</strong>: <%= user.userName %></p>
+              <p><strong>Email</strong>: <%= user.email %></p>
+              <a href="/logout" class="col-3 btn btn-primary">Logout</a>
+          </div>
+          <div class="mt-5">
+            <h2>Share your most recent milestones</h2>
+            <form action="/update/createUpdate" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                <label for="update" class="form-label">Update</label>
+                <textarea class="form-control" id="update" name="update"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="media" class="form-label">Media</label>
+                <input type="file" class="form-control" id="media" name="file">
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            </form>
+          </div>
+      </div>
+      <div class="col-6">
+        <ul class="row list-unstyled">
+        <% for(var i=0; i<update.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/update/<%= update[i]._id%>">
+              <h2><%= update[i].description%></h2>
+             <!-- <iframe class="img-fluid" src= <%= update[i].media %> ></iframe> -->
+              <img class="img-fluid" src="<%= update[i].media%>">
+            </a>
+          </li>
+        <% } %>
+        </ul>
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+        </div>  
+      </div>  
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') -%>
