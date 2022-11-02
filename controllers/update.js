@@ -34,7 +34,7 @@ module.exports = {
 
       //media is stored on cloudainary - the above request responds with url to media and the media id that you will need when deleting content 
       await Update.create({
-        update: req.body.update,
+        description: req.body.description,
         media: result.secure_url,
         cloudinaryId: result.public_id,
         likes: 0,
