@@ -25,6 +25,7 @@ const UpdateSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+ 
 });
 
 //MongoDB Collection named here - will give lowercase plural of name 
