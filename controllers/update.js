@@ -15,6 +15,22 @@ module.exports = {
       console.log(err);
     }
   },
+   getFeed: async (req, res) => { 
+     console.log(req.user)
+     try {
+       //Since we have a session each request (req) contains the logged-in users info: req.user
+       //console.log(req.user) to see everything
+       //Grabbing just the posts of the logged-in user
+       const update = await Update.find({ user: req.user.id }).populate('update');
+
+      console.log(update)
+
+      //Sending post data from mongodb and user data to ejs template
+      res.render("feed.ejs", { update: update , user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getUpdate: async (req, res) => {
     try {
       //id parameter comes from the post routes
@@ -37,6 +53,7 @@ module.exports = {
         description: req.body.description,
         media: result.secure_url,
         cloudinaryId: result.public_id,
+        links: req.body.links,
         likes: 0,
         user: req.user.id,
       });
