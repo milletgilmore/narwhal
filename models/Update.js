@@ -13,6 +13,10 @@ const UpdateSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
+  links:{
+    type: String,
+    require: true,
+  },
   likes: {
     type: Number,
     required: true,
