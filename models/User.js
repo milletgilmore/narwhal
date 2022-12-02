@@ -5,12 +5,12 @@ const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: {type: String, require: true},
- /* userTypeInvestor: { type: Boolean, required: true},
-  logo: {type: String, require: false,},
-  cloudinaryId: { type: String, require: true,},
   displayName: { type: String, require: true},
   description: { type: String, require: true},
-  following: { type: Array, require: false}, */
+  following: { type: Array, require: false},
+  websiteURL: { type: String, require: true},
+  headquarters: { type: String, require: true},
+  contactInfo: { type: String, require: true},
 });
 
 // Password hash middleware.
