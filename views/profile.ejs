@@ -7,6 +7,14 @@
               <p><strong>Email</strong>: <%= user.email %></p>
               <a href="/logout" class="col-3 btn btn-primary">Logout</a>
           </div>
+          <div>
+              <h1><%= user.companyName %></h1>
+              <p><%= user.description %></p>
+              <p><%= user.headquarters %></p>
+              <p><%= user.websiteURL %></p>
+              <p><%= user.contactInfo %></p>
+              <p><%= user.following %></p>
+          </div>
           <div class="mt-5">
             <h2>Share your most recent milestones</h2>
             <form action="/update/createUpdate" enctype="multipart/form-data" method="POST">
@@ -40,8 +48,11 @@
         <% } %>
         </ul>
         <div class="row justify-content-center mt-5">
-          <a class="btn btn-primary" href="/feed">Return to Feed</a>
+          <a class="btn btn-primary" href="/feed">My Feed</a>
         </div>  
+        <div class="row justify-content-center mt-5">
+          <a class="btn btn-primary" href="/discover">Discover</a>
+        </div> 
       </div>  
     </div>
   </div>
