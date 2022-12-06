@@ -83,11 +83,18 @@ exports.postSignup = (req, res, next) => {
   req.body.email = validator.normalizeEmail(req.body.email, {
     gmail_remove_dots: false,
   });
-
+  
   const user = new User({
     userName: req.body.userName,
     email: req.body.email,
     password: req.body.password,
+    companyName: req.body.companyName,
+    description: req.body.description,
+    email: req.body.email,
+    following: req.body.following,
+    websiteURL: req.body.websiteURL,
+    headquarters: req.body.headquarters,
+    contactInfo: req.body.contactInfo,
   });
 
   User.findOne(
