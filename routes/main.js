@@ -2,14 +2,14 @@ const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/auth");
 const homeController = require("../controllers/home");
-const updateController = require("../controllers/update");
+const updatesController = require("../controllers/updates");
 const { ensureAuth } = require("../middleware/auth");
 
 //Main Routes 
 router.get("/", homeController.getIndex);
-router.get("/profile", ensureAuth, updateController.getProfile);
-router.get("/feed", ensureAuth, updateController.getFeed);
-router.get("/discover", ensureAuth, updateController.getDiscover);
+router.get("/profile", ensureAuth, updatesController.getProfile);
+router.get("/feed", ensureAuth, updatesController.getFeed);
+router.get("/discover", ensureAuth, updatesController.getDiscover);
 
 //Routes for user login/signup
 router.get("/login", authController.getLogin);
