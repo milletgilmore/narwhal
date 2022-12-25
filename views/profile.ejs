@@ -36,13 +36,12 @@
       </div>
       <div class="col-6">
         <ul class="row list-unstyled">
-        <% for(var i=0; i<update.length; i++) {%>
+        <% for(var i=0; i<updates.length; i++) {%>
           <li class="col-6 justify-content-between mt-5">
-            <a href="/update/<%= update[i]._id%>">
-              <h2><%= update[i].description%></h2>
-             <!-- <iframe class="img-fluid" src= <%= update[i].media %> ></iframe> -->
-              <img class="img-fluid" src="<%= update[i].media%>">
-              <h3><%= update[i].links%></h3>
+            <a href="/update/<%= updates[i]._id%>">
+              <h2><%= updates[i].description%></h2>
+              <img class="img-fluid" src="<%= updates[i].media%>">
+              <h3><%= updates[i].links%></h3>
             </a>
           </li>
         <% } %>
