@@ -1,5 +1,6 @@
 const cloudinary = require("../middleware/cloudinary");
 const Update = require("../models/Update");
+const User = require("../models/User");
 
 module.exports = {
   getProfile: async (req, res) => { 
@@ -15,6 +16,15 @@ module.exports = {
       console.log(err);
     }
   },
+  getPublicProfile: async (req, res) => { 
+    try {
+      const user = await User.findById(req.params.id);
+      const updates = await Update.find({ user: user.id });
+      res.render("public-profile.ejs", { updates: updates, user: user });
+    } catch (err) {
+      console.log(err);
+    }
+  }, 
    getFeed: async (req, res) => { 
      console.log(req.user)
      try {
@@ -73,7 +83,7 @@ module.exports = {
       //router.get("/:id", ensureAuth, updatesController.getUpdate);
       //http://localhost:1818/post/631a7f59a3e56acfc7da286f
       //id === 631a7f59a3e56acfc7da286f
-      const update = await Update.findById(req.params.id);
+      const update = await Update.findById(req.params.id).populate("user");
       res.render("update.ejs", { update: update, user: req.user});
     } catch (err) {
       console.log(err);
