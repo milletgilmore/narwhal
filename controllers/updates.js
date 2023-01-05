@@ -99,7 +99,7 @@ module.exports = {
       console.log(err);
     }
   },
-  likePost: async (req, res) => {
+  likeUpdate: async (req, res) => {
     try {
       await Update.findOneAndUpdate(
         { _id: req.params.id },
@@ -108,22 +108,23 @@ module.exports = {
         }
       );
       console.log("Likes +1");
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect(`/update/${req.params.id}`);
     } catch (err) {
       console.log(err);
     }
   },
-  deletePost: async (req, res) => {
+  deleteUpdate: async (req, res) => {
     try {
       // Find post by id
-      let Update = await Update.findById({ _id: req.params.id });
+      let update = await Update.findById({ _id: req.params.id });
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(Update.cloudinaryId);
+      await cloudinary.uploader.destroy(update.cloudinaryId);
       // Delete post from db
-      await Update.remove({ _id: req.params.id });
-      console.log("Deleted Post");
+      await update.remove({ _id: req.params.id });
+      console.log("Deleted Update");
       res.redirect("/profile");
     } catch (err) {
+      console.log("Update was not deleted");
       res.redirect("/profile");
     }
   },

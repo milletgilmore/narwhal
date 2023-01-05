@@ -13,9 +13,9 @@ router.get("/:id", ensureAuth, updatesController.getUpdate);
 router.post("/createUpdate", upload.single("file"), updatesController.createUpdate);
 
 //Enables user to like post. In controller, uses POST model to update likes by 1
-router.put("/likePost/:id", updatesController.likePost);
+router.put("/likeUpdate/:id", updatesController.likeUpdate);
 
 //Enables user to delete post. In controller, uses POST model to delete post from MongoDB collection
-router.delete("/deletePost/:id", updatesController.deletePost);
+router.delete("/deleteUpdate/:id", updatesController.deleteUpdate);
 
 module.exports = router;
