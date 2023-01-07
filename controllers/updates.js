@@ -39,20 +39,6 @@ module.exports = {
       console.log(err);
     }
   },
-  /*getDiscover: async (req, res) => { 
-    console.log(req.user)
-    try {
-      //Fetch all updates from the database
-      const update = await Update.find().populate('update');
-
-     console.log(update)
-
-     //Sending post data from mongodb and user data to ejs template
-     res.render("discover.ejs", { update: update , user: req.user });
-   } catch (err) {
-     console.log(err);
-   }
- },*/
  getDiscover: async (req, res) => { 
   console.log(req.user)
   try {
