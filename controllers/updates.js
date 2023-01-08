@@ -28,15 +28,15 @@ module.exports = {
    getFeed: async (req, res) => { 
      console.log(req.user)
      try {
-       //Fetch all updates from the database
-       const updates = await Update.find().populate('update');
-
-      console.log(updates)
-
-      //Sending post data from mongodb and user data to ejs template
-      res.render("feed.ejs", { updates: updates , user: req.user });
+      // Find updates from the current user and users that the current user is following
+      const updates = await Update.find({
+        user: { $in: [req.user._id, ...req.user.following] }
+      });
+  
+      // Render the feed template with the updates data
+      res.render('feed.ejs', { updates: updates });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
  getDiscover: async (req, res) => { 
@@ -124,4 +124,36 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  follow: async (req, res) => {
+    try {
+      // Find logged in user and add the ID of the user being followed to their following array
+      await User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          $addToSet: { following: req.params.id }
+        }
+      );
+      console.log("Followed user");
+      res.redirect(`/profile/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  unfollow: async (req, res) => {
+    try {
+      // Find logged in user and remove the ID of the user being unfollowed from their following array
+      await User.findOneAndUpdate(
+        { _id: req.user.id },
+        {
+          $pull: { following: req.params.id }
+        }
+      );
+      console.log("Unfollowed user");
+      res.redirect(`/profile/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  }
 };
+
+
