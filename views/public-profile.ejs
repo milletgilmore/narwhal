@@ -11,7 +11,12 @@
               <p><%= user.following %></p>
           </div>
       </div>
-    </form>
+      <form action="/follow/<%= user._id %>" method="POST">
+        <button type="submit" class="btn btn-primary">Follow</button>
+      </form>
+      <form action="/unfollow/<%= user._id %>" method="post">
+        <button type="submit" class="btn btn-primary">Unfollow</button>
+      </form>
       <div class="col-6">
         <ul class="row list-unstyled">
         <% for(var i=0; i<updates.length; i++) {%>
