@@ -11,6 +11,8 @@ router.get("/profile", ensureAuth, updatesController.getProfile);
 router.get("/feed", ensureAuth, updatesController.getFeed);
 router.get("/discover", ensureAuth, updatesController.getDiscover)
 router.get("/profile/:id", updatesController.getPublicProfile);
+router.post("/follow/:id", updatesController.follow);
+router.post("/unfollow/:id", updatesController.unfollow);
 
 //Routes for user login/signup
 router.get("/login", authController.getLogin);
