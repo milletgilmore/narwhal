@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
   password: {type: String, require: true},
   companyName: { type: String, require: true},
   description: { type: String, require: true},
-  following: [{type: mongoose.Schema.Types.ObjectId,ref: 'User'}],
+  following: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   websiteURL: { type: String, require: true},
   headquarters: { type: String, require: true},
   contactInfo: { type: String, require: true},
