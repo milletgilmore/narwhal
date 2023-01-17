@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Narwhal</title>
+    <link 
+    rel="stylesheet" 
+    href="css/tailwind.css" 
+    />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="/imgs/favicon-32x32.png"
+      href="imgs/logo.png"
     />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
@@ -23,35 +27,27 @@
       integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="css/tailwind.css" />
   </head>
   <body>
-    <!--<header class="container">
-      <div class="text-center">
-        <h1 class="btn btn-block"><a href="/profile">Narwhal</a></h1>
-        <span>Discovery and track companies in the big blue sea</span>
-      </div>
-    </header>-->
-    <div className="navbar bg-base-100">
-      <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
-      </div>
-      <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
-          <li><a>Item 1</a></li>
-          <li tabIndex={0}>
-            <a>
-              Parent
-              <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
-            </a>
-            <ul className="p-2 bg-base-100">
-              <li><a>Submenu 1</a></li>
-              <li><a>Submenu 2</a></li>
-            </ul>
-          </li>
-          <li><a>Item 3</a></li>
-        </ul>
-      </div>
+    <!--Nav bar-->
+   <nav class="relative container mx-auto p-6">
+    <!--Flex container-->
+    <div class="flex items-center justify-between">
+      <!--Logo-->
+      <div class="pt-2">
+        <img src="imgs/logoxsmall.png" alt="Narwhal logo"/>
+      </div class="pt-2">
+      <!--Menu items-->
+      <a href="#" class="md:block p-3 px-6 pt-2 text-white bg-darkBlue rounded-full baseline hover:bg-lightBlue">
+        Feed
+      </a>
+      <a href="#" class="md:block p-3 px-6 pt-2 text-white bg-darkBlue rounded-full baseline hover:bg-lightBlue">
+        Discover
+      </a>
+      <a href="#" class="md:block p-3 px-6 pt-2 text-white bg-darkBlue rounded-full baseline hover:bg-lightBlue">
+        Profile
+      </a>
     </div>
+  </nav>
   </body>
 </html>
